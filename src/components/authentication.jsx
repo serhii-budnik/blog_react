@@ -43,29 +43,31 @@ class AuthenticationControl extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isLoggedIn: false };
+    this.state = { isSignedIn: false };
   }
 
   handleLoginClick() {
-    this.setState((prevState, props) => { return { isLoggedIn: true }; });
+    this.setState((prevState, props) => { return { isSignedIn: true }; });
   }
 
   handleLogoutClick() {
-    this.setState((prevState, props) => { return { isLoggedIn: false }; });
+    this.setState((prevState, props) => { return { isSignedIn: false }; });
   }
 
   render() {
-    const button = this.state.isLoggedIn ?
+    const button = this.state.isSignedIn ?
       <SignOutButton onClick={() => this.handleLogoutClick()} /> :
       <SignInButton onClick={() => this.handleLoginClick()} />
 
     return (
       <div>
         <div>
-          <Greating isLoggedIn={this.state.isLoggedIn} />
+          <Greating isSignedIn={this.state.isSignedIn} />
         </div>
         {button}
       </div>
     );
   }
 }
+
+export default AuthenticationControl;
