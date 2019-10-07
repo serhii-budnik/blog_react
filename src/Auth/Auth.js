@@ -1,16 +1,21 @@
-import axios from 'axios';
-
 class Auth {
-  login = (params) => {
-    axios.post(
-      'https://reqres.in/api/login', params
-    ).then((response) => {
-      console.log(response);
+  login = async (params) => {
+    let response = await fetch(
+      'https://reqres.in/api/login',
+      {
+        method: 'POST',
+        body: JSON.stringify(params),
+        headers: new Headers({'content-type': 'application/json',})
+      }
+    )
 
-      this.setToken(response.data.token);
-    }).catch((error) => {
-      console.log(error)
-    });
+    if (response.ok) {
+      let json = await response.json();
+      this.setToken(json.token);
+      return Promise.resolve('successful signed in');
+    }
+
+    return Promise.reject(response.status);
   }
 
   logout = () => {

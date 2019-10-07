@@ -3,17 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from './components/authentication/login.jsx';
-
-import './index.css';
-
-let Home = () => {
-  return (
-    <div>
-      <h1>Home</h1>
-      <Link to="/sign_in">Sign In Page</Link>
-    </div>
-  );
-}
+import Home from './components/home.jsx';
 
 class App extends React.Component {
   render(){

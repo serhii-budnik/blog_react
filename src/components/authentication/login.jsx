@@ -7,9 +7,7 @@ class Login extends React.Component {
   constructor(props){
     super(props);
 
-    this.domain = 'https://reqres.in'
-
-    this.state = {email: 'eve.holt@reqres.in', password: 'cityslicka'};
+    this.state = { email: 'eve.holt@reqres.in', password: 'cityslicka'};
   }
 
   handleChangeEmail(event){
@@ -24,7 +22,11 @@ class Login extends React.Component {
     event.preventDefault();
 
     let auth = new Auth();
-    auth.login({email: this.state.email, password: this.state.password});
+    auth.login(
+      {email: this.state.email, password: this.state.password}
+    ).then(() =>  window.location.href = '/').catch(
+      (e) => console.log('Error: ', e)
+    );
   }
 
   render() {
