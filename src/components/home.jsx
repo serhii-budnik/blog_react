@@ -31,14 +31,18 @@ class Home extends React.Component{
   render() {
     return (
       <div>
-        <h1>Home {this.state.user.first_name}</h1>
+        <h1>Home</h1>
 
         {this.state.user &&
         <div>
+          <h2>{this.state.user.first_name}</h2>
+          <img src={this.state.user.avatar} alt="avatar"/>
           <button onClick={() => this.handleLogoutClick()}>sign out</button>
-        </div>}
+        </div>
+        }
 
-        <Link to="/sign_in">Sign In Page</Link>
+
+        { !this.state.user && <Link to="/sign_in">Sign In Page</Link> }
       </div>
     );
   }
