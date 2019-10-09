@@ -18,7 +18,6 @@ class Home extends React.Component{
 
   componentDidMount(){
     this.getCurrentUser().then((user) => {
-      console.log(user);
       this.setState({user: user});
     });
   }
