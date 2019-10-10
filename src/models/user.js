@@ -1,4 +1,4 @@
-import Auth from '../Auth/Auth';
+import Auth from '../auth/auth';
 
 class User {
   constructor(obj) {

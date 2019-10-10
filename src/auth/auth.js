@@ -1,4 +1,4 @@
-class Auth {
+export default class Auth {
   login = async (params) => {
     let response = await fetch(
       'https://reqres.in/api/login',
@@ -31,5 +31,3 @@ class Auth {
     return localStorage.getItem('token');
   }
 }
-
-export default Auth;
