@@ -20,7 +20,6 @@ export default class Auth {
 
   logout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/';
   }
 
   setToken = (token) => {

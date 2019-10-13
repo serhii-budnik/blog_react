@@ -10,15 +10,15 @@ export default class Login extends React.Component {
     this.state = { email: 'eve.holt@reqres.in', password: 'cityslicka'};
   }
 
-  handleChangeEmail(event){
+  handleChangeEmail = (event) => {
     this.setState({email: event.target.value});
   }
 
-  handleChangePassword(event){
+  handleChangePassword = (event) => {
     this.setState({password: event.target.value});
   }
 
-  handleFormSubmit(event){
+  handleFormSubmit = (event) => {
     event.preventDefault();
 
     let auth = new Auth();
@@ -35,16 +35,16 @@ export default class Login extends React.Component {
         <div>
           <Link to="/">Go to Home page</Link>
         </div>
-        <form onSubmit={(e) => this.handleFormSubmit(e)}>
+        <form onSubmit={this.handleFormSubmit}>
           <input
             type="email"
             value={this.state.email}
-            onChange={(e) => this.handleChangeEmail(e)}
+            onChange={this.handleChangeEmail}
           />
           <input
             type="password"
             value={this.state.password}
-            onChange={(e) => this.handleChangePassword(e)}
+            onChange={this.handleChangePassword}
           />
           <input type="submit" />
         </form>

@@ -26,9 +26,10 @@ export default class Home extends React.Component{
     });
   }
 
-  handleLogoutClick(){
+  handleLogoutClick = () => {
     let auth = new Auth();
     auth.logout();
+    this.props.history.push('/sign_in');
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class Home extends React.Component{
           <h2>{this.state.user.first_name}</h2>
           <img src={this.state.user.avatar} alt="avatar"/>
           <button
-            onClick={() => this.handleLogoutClick()}
+            onClick={this.handleLogoutClick}
             style={{
               backgroundColor: this.context.background,
               color: this.context.foreground

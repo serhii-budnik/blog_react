@@ -15,10 +15,10 @@ class App extends React.Component {
     this.state = {theme: themes.dark};
   }
 
-  themeToggle() {
+  themeToggle = () =>  {
     this.setState((prevState) => {
       return ({
-        theme: (themes.light == prevState.theme) ? themes.dark : themes.light
+        theme: (themes.light === prevState.theme) ? themes.dark : themes.light
       });
     });
   }
@@ -29,15 +29,11 @@ class App extends React.Component {
         <Router>
           <div>
             { /* keep it for navigation */}
-            <ToggleThemeButton onClick={() => this.themeToggle()} />
+            <ToggleThemeButton onClick={this.themeToggle} />
 
             <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/sign_in">
-                <Login />
-              </Route>
+              <Route exact path="/" component={Home} />
+              <Route path="/sign_in" component={Login} />
             </Switch>
           </div>
         </Router>

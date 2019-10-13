@@ -46,18 +46,18 @@ class AuthenticationControl extends React.Component {
     this.state = { isSignedIn: false };
   }
 
-  handleLoginClick() {
+  handleLoginClick = () => {
     this.setState((prevState, props) => { return { isSignedIn: true }; });
   }
 
-  handleLogoutClick() {
+  handleLogoutClick = () => {
     this.setState((prevState, props) => { return { isSignedIn: false }; });
   }
 
   render() {
     const button = this.state.isSignedIn ?
-      <SignOutButton onClick={() => this.handleLogoutClick()} /> :
-      <SignInButton onClick={() => this.handleLoginClick()} />
+      <SignOutButton onClick={this.handleLogoutClick} /> :
+      <SignInButton onClick={this.handleLoginClick} />
 
     return (
       <div>
