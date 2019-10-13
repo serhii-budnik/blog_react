@@ -24,7 +24,7 @@ export default class Login extends React.Component {
     let auth = new Auth();
     auth.login(
       {email: this.state.email, password: this.state.password}
-    ).then(() =>  window.location.href = '/').catch(
+    ).then(() =>  this.props.history.push('/')).catch(
       (e) => console.log('Error: ', e)
     );
   }
