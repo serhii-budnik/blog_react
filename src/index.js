@@ -8,6 +8,8 @@ import ToggleThemeButton from './components/toggle_theme_button.jsx';
 
 import {ThemeContext, themes} from './contexts/theme_context';
 
+require('dotenv').config();
+
 class App extends React.Component {
   constructor(props) {
     super(props);
