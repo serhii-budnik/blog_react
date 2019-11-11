@@ -1,3 +1,5 @@
+import NodaAppApi from '../api/noda_app_api';
+
 export default class Auth {
   login = async (params) => {
     let response = await fetch(
@@ -8,6 +10,8 @@ export default class Auth {
         headers: new Headers({'content-type': 'application/json',})
       }
     )
+
+    // TODO: NodaAppApi.post
 
     if (response.ok) {
       let json = await response.json();
