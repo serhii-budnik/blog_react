@@ -72,10 +72,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 domain: "https://nodaapp.herokuapp.com"
 
-POST: /posts = {title, subTitle}
+POST: /posts | params: {title, subTitle}
 GET:  /posts
 GET:  /posts/:id
 
-POST: /auth/login = {login, password}
-POST: /auth/sign_up = {login, password}
+POST: /auth/login | params: {login, password}
+POST: /auth/sign_up | params: {login, password}
+GET:  /auth/profile | headers: {authorization}
 
