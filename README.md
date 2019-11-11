@@ -66,3 +66,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### API
+
+domain: "https://nodaapp.herokuapp.com"
+
+POST: /posts = {title, subTitle}
+GET:  /posts
+GET:  /posts/:id
+
+POST: /auth/login = {login, password}
+POST: /auth/sign_up = {login, password}
+
