@@ -16,7 +16,7 @@ export default class Home extends React.Component{
 
   async getCurrentUser() {
     let data = await User.getCurrentUser();
-    let user = new User(data.data);
+    let user = new User(data);
     return user;
   }
 
@@ -39,7 +39,7 @@ export default class Home extends React.Component{
 
         {this.state.user &&
         <div>
-          <h2>{this.state.user.first_name}</h2>
+          <h2>{this.state.user.login}</h2>
           <img src={this.state.user.avatar} alt="avatar"/>
           <button
             onClick={this.handleLogoutClick}

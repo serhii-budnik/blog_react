@@ -1,11 +1,12 @@
 import Auth from '../auth/auth';
+import NodaAppApi from '../api/noda_app_api';
 
-class User {
+export default class User {
   constructor(obj) {
-    this.id = obj.id
-    this.first_name = obj.first_name;
-    this.last_name = obj.last_name;
-    this.avatar = obj.avatar;
+    this.id = obj._id
+    this.login = obj.login;
+    this.createdAt = obj.created_at;
+    this.updatedAt = obj.updatedAt;
   }
 
   static async getUser(id){
@@ -17,13 +18,12 @@ class User {
   }
 
   static async getCurrentUser() {
-    let auth = new Auth();
-    let token = auth.getToken();
-    console.log('tojen', token);
-    if (!token) return Promise.reject('User not found');
+    const auth = new Auth();
+    const token = auth.getToken();
+    const api = new NodaAppApi('/auth/profile');
 
-    return this.getUser(2);
+    const response = await api.get({}, {'authorization': token});
+
+    return response.ok ? await response.json() : null
   }
 }
-
-export default User;

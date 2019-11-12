@@ -2,24 +2,16 @@ import NodaAppApi from '../api/noda_app_api';
 
 export default class Auth {
   login = async (params) => {
-    let response = await fetch(
-      'https://reqres.in/api/login',
-      {
-        method: 'POST',
-        body: JSON.stringify(params),
-        headers: new Headers({'content-type': 'application/json',})
-      }
-    )
+    const login = new NodaAppApi('/auth/login')
+    const response = await login.post(params);
 
-    // TODO: NodaAppApi.post
-
+    const json = await response.json();
     if (response.ok) {
-      let json = await response.json();
       this.setToken(json.token);
       return Promise.resolve('successful signed in');
     }
 
-    return Promise.reject(response.status);
+    return Promise.reject(json);
   }
 
   logout = () => {

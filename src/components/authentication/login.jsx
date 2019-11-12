@@ -7,11 +7,11 @@ export default class Login extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = { email: 'eve.holt@reqres.in', password: 'cityslicka'};
+    this.state = {login: 's.budnik', password: '12345678'};
   }
 
   handleChangeEmail = (event) => {
-    this.setState({email: event.target.value});
+    this.setState({login: event.target.value});
   }
 
   handleChangePassword = (event) => {
@@ -23,9 +23,9 @@ export default class Login extends React.Component {
 
     let auth = new Auth();
     auth.login(
-      {email: this.state.email, password: this.state.password}
+      {login: this.state.login, password: this.state.password}
     ).then(() =>  this.props.history.push('/')).catch(
-      (e) => console.log('Error: ', e)
+      (e) => alert(e.error)
     );
   }
 
@@ -37,8 +37,8 @@ export default class Login extends React.Component {
         </div>
         <form onSubmit={this.handleFormSubmit}>
           <input
-            type="email"
-            value={this.state.email}
+            type="text"
+            value={this.state.login}
             onChange={this.handleChangeEmail}
           />
           <input

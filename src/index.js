@@ -30,7 +30,7 @@ class App extends React.Component {
       <ThemeContext.Provider value={this.state.theme}>
         <Router>
           <div>
-            { /* keep it for navigation */}
+            { /* keep it for navigation */ }
             <ToggleThemeButton onClick={this.themeToggle} />
 
             <Switch>
