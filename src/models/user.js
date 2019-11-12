@@ -22,7 +22,7 @@ export default class User {
     const token = auth.getToken();
     const api = new NodaAppApi('/auth/profile');
 
-    const response = await api.get({}, {'authorization': token});
+    const response = await api.get({ headers: {'authorization': token}});
 
     return response.ok ? await response.json() : null
   }

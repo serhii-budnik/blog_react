@@ -6,20 +6,24 @@ export default class NodaAppApi {
     this.url = url;
   }
 
-  get = (params, headers = {}) => fetch(
-    `${this.domain}${this.url}`,
-    {
-      qs: params,
-      headers: Object.assign(headers, { 'Content-Type': 'application/json' })
-    }
-  )
+  get = (req = {}) => {
+    let req_params = new URLSearchParams(req.params).toString()
+    if (!!req_params) req_params = '?'.concat(req_params)
 
-  post = (params, headers = {}) => fetch(
+    return fetch(
+      `${this.domain}${this.url}${req_params}`,
+      {
+        headers: Object.assign(req.headers || {}, { 'Content-Type': 'application/json' })
+      }
+    )
+  }
+
+  post = (req = {}) => fetch(
     `${this.domain}${this.url}`,
     {
       method: 'POST',
-      body: JSON.stringify(params),
-      headers: Object.assign(headers, { 'Content-Type': 'application/json' })
+      body: JSON.stringify(req.body),
+      headers: Object.assign(req.headers || {}, { 'Content-Type': 'application/json' })
     }
   )
 }
