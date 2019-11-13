@@ -16,8 +16,9 @@ export default class Home extends React.Component{
 
   async getCurrentUser() {
     let data = await User.getCurrentUser();
-    let user = new User(data);
-    return user;
+    if (!data) return null;
+
+    return new User(data);;
   }
 
   componentDidMount(){

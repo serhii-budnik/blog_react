@@ -20,10 +20,14 @@ export default class User {
   static async getCurrentUser() {
     const auth = new Auth();
     const token = auth.getToken();
-    const api = new NodaAppApi('/auth/profile');
 
-    const response = await api.get({ headers: {'authorization': token}});
+    try {
+      const api = new NodaAppApi('/auth/profile');
+      const response = await api.get({ headers: {'authorization': token}});
 
-    return response.ok ? await response.json() : null
+      return await response.json()
+    } catch(e) {
+      return null
+    }
   }
 }
